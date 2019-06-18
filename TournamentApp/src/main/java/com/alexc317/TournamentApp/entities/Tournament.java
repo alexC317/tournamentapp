@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Tournament {
 
     private int ID;
-    private String gameName;
+    private Game game;
     private int eventID;
 
     public int getID() {
@@ -25,12 +25,12 @@ public class Tournament {
         this.ID = ID;
     }
 
-    public String getGameName() {
-        return gameName;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameName(String gameName) {
-        this.gameName = gameName;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public int getEventID() {
@@ -45,7 +45,7 @@ public class Tournament {
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + this.ID;
-        hash = 97 * hash + Objects.hashCode(this.gameName);
+        hash = 97 * hash + Objects.hashCode(this.game);
         hash = 97 * hash + this.eventID;
         return hash;
     }
@@ -68,7 +68,7 @@ public class Tournament {
         if (this.eventID != other.eventID) {
             return false;
         }
-        if (!Objects.equals(this.gameName, other.gameName)) {
+        if (!Objects.equals(this.game, other.game)) {
             return false;
         }
         return true;
