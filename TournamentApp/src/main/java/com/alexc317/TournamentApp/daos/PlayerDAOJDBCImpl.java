@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 
-public class PlayerDAOImpl implements PlayerDAO {
+public class PlayerDAOJDBCImpl implements PlayerDAO {
 
     @Autowired
     private JdbcTemplate jdbc;
