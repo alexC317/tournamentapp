@@ -20,7 +20,7 @@ public interface PlayerDAO {
 
     public Player getPlayer(int ID);
 
-    public void editPlayer(int ID);
+    public void editPlayer(Player player);
 
     public void deletePlayer(int ID);
 }
