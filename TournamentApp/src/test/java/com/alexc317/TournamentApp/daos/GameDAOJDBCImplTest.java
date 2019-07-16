@@ -42,9 +42,9 @@ public class GameDAOJDBCImplTest {
 
     @Before
     public void setUp() {
-        List<Game> games = gameDAO.readAll();
+        List<Game> games = gameDAO.getAllGames();
         for (Game game : games) {
-            gameDAO.delete(game.getID());
+            gameDAO.deleteGame(game.getID());
         }
     }
 
@@ -56,9 +56,9 @@ public class GameDAOJDBCImplTest {
     public void testAddAndRead() {
         Game game = new Game();
         game.setGameName("Street Fighter IV");
-        gameDAO.create(game);
+        gameDAO.addGame(game);
         
-        Game fromDAO = gameDAO.readByID(game.getID());
+        Game fromDAO = gameDAO.getGame(game.getID());
         assertEquals(fromDAO, game);
     }
 

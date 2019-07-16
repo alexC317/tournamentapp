@@ -14,13 +14,13 @@ import java.util.List;
  */
 public interface GameDAO {
 
-    public Game create(Game game);
+    public Game addGame(Game game);
 
-    public List<Game> readAll();
+    public List<Game> getAllGames();
 
-    public Game readByID(int ID);
+    public Game getGame(int ID);
 
-    public void update(Game game);
+    public void updateGame(Game game);
 
-    public void delete(int ID);
+    public void deleteGame(int ID);
 }
