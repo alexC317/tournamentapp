@@ -23,8 +23,8 @@ public class GameDAOJDBCImpl implements GameDAO {
     private final String INSERT_NEW_GAME = "INSERT INTO Game(gameName) VALUES(?)";
     private final String SELECT_ALL_GAMES = "SELECT ID, gameName FROM Game";
     private final String SELECT_GAME_BY_ID = "SELECT ID, gameName FROM Game WHERE ID = ?";
-    private String UPDATE_GAME;
-    private String DELETE_GAME = "DELETE FROM Game WHERE ID = ?";
+    private final String UPDATE_GAME = "UPDATE Game SET gameName = ? WHERE ID = ?";
+    private final String DELETE_GAME = "DELETE FROM Game WHERE ID = ?";
 
     @Override
     public Game addGame(Game game) {
@@ -46,7 +46,7 @@ public class GameDAOJDBCImpl implements GameDAO {
 
     @Override
     public void updateGame(Game game) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jdbc.update(UPDATE_GAME, game.getGameName(), game.getID());
     }
 
     @Override
