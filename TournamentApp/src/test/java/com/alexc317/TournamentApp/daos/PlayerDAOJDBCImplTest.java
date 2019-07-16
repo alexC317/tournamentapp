@@ -70,6 +70,20 @@ public class PlayerDAOJDBCImplTest {
     }
 
     /**
+     * Test of addPlayer method, of class PlayerDAOJDBCImpl.
+     */
+    @Test
+    public void testAddAndGetPlayerNullGamertag() {
+        Player player = new Player();
+        player.setFirstName("Alex");
+        player.setLastName("Cepeda");
+        playerDAO.addPlayer(player);
+
+        Player fromDAO = playerDAO.getPlayer(player.getID());
+        assertEquals(fromDAO, player);
+    }
+
+    /**
      * Test of getAllPlayers method, of class PlayerDAOJDBCImpl.
      */
     @Test
@@ -114,7 +128,7 @@ public class PlayerDAOJDBCImplTest {
         assertEquals(fromDAO, player1);
 
     }
-    
+
     /**
      * Test of editPlayer method, of class PlayerDAOJDBCImpl.
      */
@@ -159,13 +173,13 @@ public class PlayerDAOJDBCImplTest {
         assertEquals(2, players.size());
         assertTrue(players.contains(player1));
         assertTrue(players.contains(player2));
-        
+
         playerDAO.deletePlayer(player1.getID());
         players = playerDAO.getAllPlayers();
         assertEquals(1, players.size());
         assertFalse(players.contains(player1));
         assertTrue(players.contains(player2));
-        
+
     }
 
 }
