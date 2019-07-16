@@ -53,13 +53,30 @@ public class GameDAOJDBCImplTest {
     }
 
     @Test
-    public void testAddAndRead() {
+    public void testAddAndGet() {
         Game game = new Game();
         game.setGameName("Street Fighter IV");
         gameDAO.addGame(game);
         
         Game fromDAO = gameDAO.getGame(game.getID());
         assertEquals(fromDAO, game);
+    }
+    
+    @Test
+    public void testGetAllGames() {
+        Game game1 = new Game();
+        game1.setGameName("Street Fighter IV");
+        gameDAO.addGame(game1);
+        
+        Game game2 = new Game();
+        game2.setGameName("Tekken 7");
+        gameDAO.addGame(game2);
+        
+        List<Game> games = gameDAO.getAllGames();
+        assertEquals(2, games.size());
+        assertTrue(games.contains(game1));
+        assertTrue(games.contains(game2));
+        
     }
 
 }
