@@ -44,7 +44,7 @@ public class GameDAOJDBCImplTest {
     public void setUp() {
         List<Game> games = gameDAO.getAllGames();
         for (Game game : games) {
-            gameDAO.deleteGame(game.getID());
+            gameDAO.deleteGame(game.getGameID());
         }
     }
 
@@ -58,7 +58,7 @@ public class GameDAOJDBCImplTest {
         game.setGameName("Street Fighter IV");
         gameDAO.addGame(game);
 
-        Game fromDAO = gameDAO.getGame(game.getID());
+        Game fromDAO = gameDAO.getGame(game.getGameID());
         assertEquals(fromDAO, game);
     }
 
@@ -85,13 +85,13 @@ public class GameDAOJDBCImplTest {
         game.setGameName("Street Fighter III: 2nd Impact");
         gameDAO.addGame(game);
 
-        Game fromDAO = gameDAO.getGame(game.getID());
+        Game fromDAO = gameDAO.getGame(game.getGameID());
         assertEquals(fromDAO, game);
         game.setGameName("Street Fighter III: 3rd Strike");
         gameDAO.updateGame(game);
 
         assertNotEquals(fromDAO, game);
-        fromDAO = gameDAO.getGame(game.getID());
+        fromDAO = gameDAO.getGame(game.getGameID());
         assertEquals(fromDAO, game);
 
     }
@@ -111,7 +111,7 @@ public class GameDAOJDBCImplTest {
         assertTrue(games.contains(game1));
         assertTrue(games.contains(game2));
 
-        gameDAO.deleteGame(game1.getID());
+        gameDAO.deleteGame(game1.getGameID());
         games = gameDAO.getAllGames();
         assertEquals(1, games.size());
         assertFalse(games.contains(game1));

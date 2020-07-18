@@ -45,7 +45,7 @@ public class EventDAOJDBCImplTest {
     public void setUp() {
         List<Event> events = eventDAO.getAllEvents();
         for (Event event : events) {
-            eventDAO.deleteEvent(event.getID());
+            eventDAO.deleteEvent(event.getEventID());
         }
     }
     
@@ -59,13 +59,13 @@ public class EventDAOJDBCImplTest {
     @Test
     public void testAddEvent() {
         Event event = new Event();
-        event.setName("Evolution");
-        event.setStartDate(LocalDate.parse("2019-01-01"));
-        event.setEndDate(LocalDate.parse("2019-01-04"));
+        event.setEventName("Evolution");
+        event.setEventStartDate(LocalDate.parse("2019-01-01"));
+        event.setEventEndDate(LocalDate.parse("2019-01-04"));
         
         eventDAO.addEvent(event);
         
-        Event fromDAO = eventDAO.getEventByID(event.getID());
+        Event fromDAO = eventDAO.getEventByID(event.getEventID());
         assertEquals(fromDAO, event);
     }
 

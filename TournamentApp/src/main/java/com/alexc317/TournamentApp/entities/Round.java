@@ -13,50 +13,50 @@ import java.util.Objects;
  */
 public class Round {
 
-    private int ID;
-    private Player player1;
-    private Player player2;
-    private boolean p1Winner;
+    private int roundID;
+    private Player roundPlayer1;
+    private Player roundPlayer2;
+    private boolean isP1Winner;
 
-    public int getID() {
-        return ID;
+    public int getRoundID() {
+        return roundID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setRoundID(int roundID) {
+        this.roundID = roundID;
     }
 
-    public Player getPlayer1() {
-        return player1;
+    public Player getRoundPlayer1() {
+        return roundPlayer1;
     }
 
-    public void setPlayer1(Player player1) {
-        this.player1 = player1;
+    public void setRoundPlayer1(Player roundPlayer1) {
+        this.roundPlayer1 = roundPlayer1;
     }
 
-    public Player getPlayer2() {
-        return player2;
+    public Player getRoundPlayer2() {
+        return roundPlayer2;
     }
 
-    public void setPlayer2(Player player2) {
-        this.player2 = player2;
+    public void setRoundPlayer2(Player roundPlayer2) {
+        this.roundPlayer2 = roundPlayer2;
     }
 
-    public boolean isP1Winner() {
-        return p1Winner;
+    public boolean isIsP1Winner() {
+        return isP1Winner;
     }
 
-    public void setP1Winner(boolean p1Winner) {
-        this.p1Winner = p1Winner;
+    public void setIsP1Winner(boolean isP1Winner) {
+        this.isP1Winner = isP1Winner;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 47 * hash + this.ID;
-        hash = 47 * hash + Objects.hashCode(this.player1);
-        hash = 47 * hash + Objects.hashCode(this.player2);
-        hash = 47 * hash + (this.p1Winner ? 1 : 0);
+        hash = 47 * hash + this.roundID;
+        hash = 47 * hash + Objects.hashCode(this.roundPlayer1);
+        hash = 47 * hash + Objects.hashCode(this.roundPlayer2);
+        hash = 47 * hash + (this.isP1Winner ? 1 : 0);
         return hash;
     }
 
@@ -72,16 +72,16 @@ public class Round {
             return false;
         }
         final Round other = (Round) obj;
-        if (this.ID != other.ID) {
+        if (this.roundID != other.roundID) {
             return false;
         }
-        if (this.p1Winner != other.p1Winner) {
+        if (this.isP1Winner != other.isP1Winner) {
             return false;
         }
-        if (!Objects.equals(this.player1, other.player1)) {
+        if (!Objects.equals(this.roundPlayer1, other.roundPlayer1)) {
             return false;
         }
-        if (!Objects.equals(this.player2, other.player2)) {
+        if (!Objects.equals(this.roundPlayer2, other.roundPlayer2)) {
             return false;
         }
         return true;

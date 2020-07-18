@@ -29,9 +29,9 @@ public class EventDAOJDBCImpl implements EventDAO {
 
     @Override
     public Event addEvent(Event event) {
-        jdbc.update(INSERT_NEW_EVENT, event.getName(), event.getStartDate(), event.getEndDate());
+        jdbc.update(INSERT_NEW_EVENT, event.getEventName(), event.getEventStartDate(), event.getEventEndDate());
         int newID = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
-        event.setID(newID);
+        event.setEventID(newID);
         return event;
     }
 
@@ -60,10 +60,10 @@ public class EventDAOJDBCImpl implements EventDAO {
         @Override
         public Event mapRow(ResultSet rs, int i) throws SQLException {
             Event event = new Event();
-            event.setID(rs.getInt("ID"));
-            event.setName(rs.getString("name"));
-            event.setStartDate(rs.getDate("startDate").toLocalDate());
-            event.setEndDate(rs.getDate("endDate").toLocalDate());
+            event.setEventID(rs.getInt("ID"));
+            event.setEventName(rs.getString("name"));
+            event.setEventStartDate(rs.getDate("startDate").toLocalDate());
+            event.setEventEndDate(rs.getDate("endDate").toLocalDate());
             
             return event;
         }

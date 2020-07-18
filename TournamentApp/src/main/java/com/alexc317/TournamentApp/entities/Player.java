@@ -13,50 +13,50 @@ import java.util.Objects;
  */
 public class Player {
 
-    private int ID;
-    private String firstName;
-    private String lastName;
-    private String gamertag;
+    private int playerID;
+    private String playerFirstName;
+    private String playerLastName;
+    private String playerDisplayName;
 
-    public int getID() {
-        return ID;
+    public int getPlayerID() {
+        return playerID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setPlayerID(int playerID) {
+        this.playerID = playerID;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getPlayerFirstName() {
+        return playerFirstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setPlayerFirstName(String playerFirstName) {
+        this.playerFirstName = playerFirstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPlayerLastName() {
+        return playerLastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPlayerLastName(String playerLastName) {
+        this.playerLastName = playerLastName;
     }
 
-    public String getGamertag() {
-        return gamertag;
+    public String getPlayerDisplayName() {
+        return playerDisplayName;
     }
 
-    public void setGamertag(String gamertag) {
-        this.gamertag = gamertag;
+    public void setPlayerDisplayName(String playerDisplayName) {
+        this.playerDisplayName = playerDisplayName;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + this.ID;
-        hash = 67 * hash + Objects.hashCode(this.firstName);
-        hash = 67 * hash + Objects.hashCode(this.lastName);
-        hash = 67 * hash + Objects.hashCode(this.gamertag);
+        hash = 67 * hash + this.playerID;
+        hash = 67 * hash + Objects.hashCode(this.playerFirstName);
+        hash = 67 * hash + Objects.hashCode(this.playerLastName);
+        hash = 67 * hash + Objects.hashCode(this.playerDisplayName);
         return hash;
     }
 
@@ -72,16 +72,16 @@ public class Player {
             return false;
         }
         final Player other = (Player) obj;
-        if (this.ID != other.ID) {
+        if (this.playerID != other.playerID) {
             return false;
         }
-        if (!Objects.equals(this.firstName, other.firstName)) {
+        if (!Objects.equals(this.playerFirstName, other.playerFirstName)) {
             return false;
         }
-        if (!Objects.equals(this.lastName, other.lastName)) {
+        if (!Objects.equals(this.playerLastName, other.playerLastName)) {
             return false;
         }
-        if (!Objects.equals(this.gamertag, other.gamertag)) {
+        if (!Objects.equals(this.playerDisplayName, other.playerDisplayName)) {
             return false;
         }
         return true;

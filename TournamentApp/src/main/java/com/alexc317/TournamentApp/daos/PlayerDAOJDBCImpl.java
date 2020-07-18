@@ -29,9 +29,9 @@ public class PlayerDAOJDBCImpl implements PlayerDAO {
 
     @Override
     public Player addPlayer(Player player) {
-        jdbc.update(INSERT_NEW_PLAYER, player.getFirstName(), player.getLastName(), player.getGamertag());
+        jdbc.update(INSERT_NEW_PLAYER, player.getPlayerFirstName(), player.getPlayerLastName(), player.getPlayerDisplayName());
         int newID = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
-        player.setID(newID);
+        player.setPlayerID(newID);
         return player;
     }
 
@@ -47,7 +47,7 @@ public class PlayerDAOJDBCImpl implements PlayerDAO {
 
     @Override
     public void editPlayer(Player player) {
-        jdbc.update(EDIT_PLAYER, player.getFirstName(), player.getLastName(), player.getGamertag(), player.getID());
+        jdbc.update(EDIT_PLAYER, player.getPlayerFirstName(), player.getPlayerLastName(), player.getPlayerDisplayName(), player.getPlayerID());
     }
 
     @Override
@@ -60,10 +60,10 @@ public class PlayerDAOJDBCImpl implements PlayerDAO {
         @Override
         public Player mapRow(ResultSet rs, int i) throws SQLException {
             Player player = new Player();
-            player.setID(rs.getInt("ID"));
-            player.setFirstName(rs.getString("firstName"));
-            player.setLastName(rs.getString("lastName"));
-            player.setGamertag((rs.getString("gamertag")));
+            player.setPlayerID(rs.getInt("ID"));
+            player.setPlayerFirstName(rs.getString("firstName"));
+            player.setPlayerLastName(rs.getString("lastName"));
+            player.setPlayerDisplayName((rs.getString("gamertag")));
 
             return player;
         }

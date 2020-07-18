@@ -13,16 +13,16 @@ import java.util.Objects;
  */
 public class Tournament {
 
-    private int ID;
+    private int tournamentID;
     private Game game;
     private int eventID;
 
-    public int getID() {
-        return ID;
+    public int getTournamentID() {
+        return tournamentID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setTournamentID(int tournamentID) {
+        this.tournamentID = tournamentID;
     }
 
     public Game getGame() {
@@ -44,7 +44,7 @@ public class Tournament {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.ID;
+        hash = 97 * hash + this.tournamentID;
         hash = 97 * hash + Objects.hashCode(this.game);
         hash = 97 * hash + this.eventID;
         return hash;
@@ -62,7 +62,7 @@ public class Tournament {
             return false;
         }
         final Tournament other = (Tournament) obj;
-        if (this.ID != other.ID) {
+        if (this.tournamentID != other.tournamentID) {
             return false;
         }
         if (this.eventID != other.eventID) {

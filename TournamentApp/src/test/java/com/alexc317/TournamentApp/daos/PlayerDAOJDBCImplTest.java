@@ -44,7 +44,7 @@ public class PlayerDAOJDBCImplTest {
     public void setUp() {
         List<Player> players = playerDAO.getAllPlayers();
         for (Player player : players) {
-            playerDAO.deletePlayer(player.getID());
+            playerDAO.deletePlayer(player.getPlayerID());
         }
 
     }
@@ -59,13 +59,13 @@ public class PlayerDAOJDBCImplTest {
     @Test
     public void testAddAndGetPlayer() {
         Player player = new Player();
-        player.setFirstName("Alex");
-        player.setLastName("Cepeda");
-        player.setGamertag("gris317");
+        player.setPlayerFirstName("Alex");
+        player.setPlayerLastName("Cepeda");
+        player.setPlayerDisplayName("gris317");
 
         playerDAO.addPlayer(player);
 
-        Player fromDAO = playerDAO.getPlayer(player.getID());
+        Player fromDAO = playerDAO.getPlayer(player.getPlayerID());
         assertEquals(fromDAO, player);
     }
 
@@ -75,11 +75,11 @@ public class PlayerDAOJDBCImplTest {
     @Test
     public void testAddAndGetPlayerNullGamertag() {
         Player player = new Player();
-        player.setFirstName("Alex");
-        player.setLastName("Cepeda");
+        player.setPlayerFirstName("Alex");
+        player.setPlayerLastName("Cepeda");
         playerDAO.addPlayer(player);
 
-        Player fromDAO = playerDAO.getPlayer(player.getID());
+        Player fromDAO = playerDAO.getPlayer(player.getPlayerID());
         assertEquals(fromDAO, player);
     }
 
@@ -89,15 +89,15 @@ public class PlayerDAOJDBCImplTest {
     @Test
     public void testGetAllPlayers() {
         Player player1 = new Player();
-        player1.setFirstName("Alex");
-        player1.setLastName("Cepeda");
-        player1.setGamertag("gris317");
+        player1.setPlayerFirstName("Alex");
+        player1.setPlayerLastName("Cepeda");
+        player1.setPlayerDisplayName("gris317");
         playerDAO.addPlayer(player1);
 
         Player player2 = new Player();
-        player2.setFirstName("Kevin");
-        player2.setLastName("Cepeda");
-        player2.setGamertag("dweeb");
+        player2.setPlayerFirstName("Kevin");
+        player2.setPlayerLastName("Cepeda");
+        player2.setPlayerDisplayName("dweeb");
         playerDAO.addPlayer(player2);
 
         List<Player> players = playerDAO.getAllPlayers();
@@ -112,19 +112,19 @@ public class PlayerDAOJDBCImplTest {
     @Test
     public void testEditPlayer() {
         Player player1 = new Player();
-        player1.setFirstName("Alex");
-        player1.setLastName("Cepeda");
-        player1.setGamertag("gris317");
+        player1.setPlayerFirstName("Alex");
+        player1.setPlayerLastName("Cepeda");
+        player1.setPlayerDisplayName("gris317");
         playerDAO.addPlayer(player1);
 
-        Player fromDAO = playerDAO.getPlayer(player1.getID());
+        Player fromDAO = playerDAO.getPlayer(player1.getPlayerID());
         assertEquals(fromDAO, player1);
 
-        player1.setGamertag("thepretender317");
+        player1.setPlayerDisplayName("thepretender317");
         playerDAO.editPlayer(player1);
         assertNotEquals(fromDAO, player1);
 
-        fromDAO = playerDAO.getPlayer(player1.getID());
+        fromDAO = playerDAO.getPlayer(player1.getPlayerID());
         assertEquals(fromDAO, player1);
 
     }
@@ -135,19 +135,19 @@ public class PlayerDAOJDBCImplTest {
     @Test
     public void testEditPlayerNullGamerTag() {
         Player player1 = new Player();
-        player1.setFirstName("Alex");
-        player1.setLastName("Cepeda");
-        player1.setGamertag("gris317");
+        player1.setPlayerFirstName("Alex");
+        player1.setPlayerLastName("Cepeda");
+        player1.setPlayerDisplayName("gris317");
         playerDAO.addPlayer(player1);
 
-        Player fromDAO = playerDAO.getPlayer(player1.getID());
+        Player fromDAO = playerDAO.getPlayer(player1.getPlayerID());
         assertEquals(fromDAO, player1);
 
-        player1.setGamertag(null);
+        player1.setPlayerDisplayName(null);
         playerDAO.editPlayer(player1);
         assertNotEquals(fromDAO, player1);
 
-        fromDAO = playerDAO.getPlayer(player1.getID());
+        fromDAO = playerDAO.getPlayer(player1.getPlayerID());
         assertEquals(fromDAO, player1);
 
     }
@@ -158,15 +158,15 @@ public class PlayerDAOJDBCImplTest {
     @Test
     public void testDeletePlayer() {
         Player player1 = new Player();
-        player1.setFirstName("Alex");
-        player1.setLastName("Cepeda");
-        player1.setGamertag("gris317");
+        player1.setPlayerFirstName("Alex");
+        player1.setPlayerLastName("Cepeda");
+        player1.setPlayerDisplayName("gris317");
         playerDAO.addPlayer(player1);
 
         Player player2 = new Player();
-        player2.setFirstName("Kevin");
-        player2.setLastName("Cepeda");
-        player2.setGamertag("dweeb");
+        player2.setPlayerFirstName("Kevin");
+        player2.setPlayerLastName("Cepeda");
+        player2.setPlayerDisplayName("dweeb");
         playerDAO.addPlayer(player2);
 
         List<Player> players = playerDAO.getAllPlayers();
@@ -174,7 +174,7 @@ public class PlayerDAOJDBCImplTest {
         assertTrue(players.contains(player1));
         assertTrue(players.contains(player2));
 
-        playerDAO.deletePlayer(player1.getID());
+        playerDAO.deletePlayer(player1.getPlayerID());
         players = playerDAO.getAllPlayers();
         assertEquals(1, players.size());
         assertFalse(players.contains(player1));

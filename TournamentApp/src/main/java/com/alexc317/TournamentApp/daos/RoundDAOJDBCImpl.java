@@ -35,9 +35,9 @@ public class RoundDAOJDBCImpl implements RoundDAO {
 
     @Override
     public Round addRound(Round round) {
-        jdbc.update(INSERT_NEW_ROUND, round.getPlayer1().getID(), round.getPlayer2().getID(), round.isP1Winner());
+        jdbc.update(INSERT_NEW_ROUND, round.getRoundPlayer1().getPlayerID(), round.getRoundPlayer2().getPlayerID(), round.isIsP1Winner());
         int newID = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
-        round.setID(newID);
+        round.setRoundID(newID);
         return round;
     }
 
@@ -68,10 +68,10 @@ public class RoundDAOJDBCImpl implements RoundDAO {
     }
 
     private void setPlayersForRound(Round round) {
-        Player player1 = jdbc.queryForObject(SELECT_PLAYER1, new PlayerMapper(), round.getID());
-        Player player2 = jdbc.queryForObject(SELECT_PLAYER2, new PlayerMapper(), round.getID());
-        round.setPlayer1(player1);
-        round.setPlayer2(player2);
+        Player player1 = jdbc.queryForObject(SELECT_PLAYER1, new PlayerMapper(), round.getRoundID());
+        Player player2 = jdbc.queryForObject(SELECT_PLAYER2, new PlayerMapper(), round.getRoundID());
+        round.setRoundPlayer1(player1);
+        round.setRoundPlayer2(player2);
     }
 
     public final static class RoundMapper implements RowMapper<Round> {
@@ -79,8 +79,8 @@ public class RoundDAOJDBCImpl implements RoundDAO {
         @Override
         public Round mapRow(ResultSet rs, int i) throws SQLException {
             Round round = new Round();
-            round.setID(rs.getInt("ID"));
-            round.setP1Winner(rs.getBoolean("p1Winner"));
+            round.setRoundID(rs.getInt("ID"));
+            round.setIsP1Winner(rs.getBoolean("p1Winner"));
             return round;
         }
 

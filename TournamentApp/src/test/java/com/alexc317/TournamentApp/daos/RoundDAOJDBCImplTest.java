@@ -48,7 +48,7 @@ public class RoundDAOJDBCImplTest {
     public void setUp() {
         List<Round> rounds = roundDAO.getAllRounds();
         for (Round round : rounds) {
-            roundDAO.deleteRound(round.getID());
+            roundDAO.deleteRound(round.getRoundID());
         }
 
     }
@@ -63,26 +63,26 @@ public class RoundDAOJDBCImplTest {
     @Test
     public void testAddAndGetRound() {
         Player player1 = new Player();
-        player1.setID(01);
-        player1.setFirstName("Alex");
-        player1.setLastName("Cepeda");
-        player1.setGamertag("DummyThicc");
+        player1.setPlayerID(01);
+        player1.setPlayerFirstName("Alex");
+        player1.setPlayerLastName("Cepeda");
+        player1.setPlayerDisplayName("DummyThicc");
         playerDAO.addPlayer(player1);
 
         Player player2 = new Player();
-        player2.setID(02);
-        player2.setFirstName("Kevin");
-        player2.setLastName("Cepeda");
-        player2.setGamertag("dweeeb");
+        player2.setPlayerID(02);
+        player2.setPlayerFirstName("Kevin");
+        player2.setPlayerLastName("Cepeda");
+        player2.setPlayerDisplayName("dweeeb");
         playerDAO.addPlayer(player2);
 
         Round round = new Round();
-        round.setPlayer1(player1);
-        round.setPlayer2(player2);
-        round.setP1Winner(true);
+        round.setRoundPlayer1(player1);
+        round.setRoundPlayer2(player2);
+        round.setIsP1Winner(true);
 
         roundDAO.addRound(round);
-        Round fromDAO = roundDAO.getRoundByID(round.getID());
+        Round fromDAO = roundDAO.getRoundByID(round.getRoundID());
         assertEquals(fromDAO, round);
     }
 
@@ -92,33 +92,33 @@ public class RoundDAOJDBCImplTest {
     @Test
     public void testGetAllRounds() {
         Player player1 = new Player();
-        player1.setID(01);
-        player1.setFirstName("Alex");
-        player1.setLastName("Cepeda");
-        player1.setGamertag("DummyThicc");
+        player1.setPlayerID(01);
+        player1.setPlayerFirstName("Alex");
+        player1.setPlayerLastName("Cepeda");
+        player1.setPlayerDisplayName("DummyThicc");
         playerDAO.addPlayer(player1);
 
         Player player2 = new Player();
-        player2.setID(02);
-        player2.setFirstName("Kevin");
-        player2.setLastName("Cepeda");
-        player2.setGamertag("dweeeb");
+        player2.setPlayerID(02);
+        player2.setPlayerFirstName("Kevin");
+        player2.setPlayerLastName("Cepeda");
+        player2.setPlayerDisplayName("dweeeb");
         playerDAO.addPlayer(player2);
 
         Round round = new Round();
-        round.setPlayer1(player1);
-        round.setPlayer2(player2);
-        round.setP1Winner(true);
+        round.setRoundPlayer1(player1);
+        round.setRoundPlayer2(player2);
+        round.setIsP1Winner(true);
 
         Round round2 = new Round();
-        round2.setPlayer1(player1);
-        round2.setPlayer2(player2);
-        round2.setP1Winner(false);
+        round2.setRoundPlayer1(player1);
+        round2.setRoundPlayer2(player2);
+        round2.setIsP1Winner(false);
 
         Round round3 = new Round();
-        round3.setPlayer1(player1);
-        round3.setPlayer2(player2);
-        round3.setP1Winner(true);
+        round3.setRoundPlayer1(player1);
+        round3.setRoundPlayer2(player2);
+        round3.setIsP1Winner(true);
 
         roundDAO.addRound(round);
         roundDAO.addRound(round2);
@@ -137,41 +137,41 @@ public class RoundDAOJDBCImplTest {
     @Test
     public void testGetRoundByID() {
         Player player1 = new Player();
-        player1.setID(01);
-        player1.setFirstName("Alex");
-        player1.setLastName("Cepeda");
-        player1.setGamertag("DummyThicc");
+        player1.setPlayerID(01);
+        player1.setPlayerFirstName("Alex");
+        player1.setPlayerLastName("Cepeda");
+        player1.setPlayerDisplayName("DummyThicc");
         playerDAO.addPlayer(player1);
 
         Player player2 = new Player();
-        player2.setID(02);
-        player2.setFirstName("Kevin");
-        player2.setLastName("Cepeda");
-        player2.setGamertag("dweeeb");
+        player2.setPlayerID(02);
+        player2.setPlayerFirstName("Kevin");
+        player2.setPlayerLastName("Cepeda");
+        player2.setPlayerDisplayName("dweeeb");
         playerDAO.addPlayer(player2);
 
         Round round = new Round();
-        round.setPlayer1(player1);
-        round.setPlayer2(player2);
-        round.setP1Winner(true);
+        round.setRoundPlayer1(player1);
+        round.setRoundPlayer2(player2);
+        round.setIsP1Winner(true);
 
         Round round2 = new Round();
-        round2.setPlayer1(player1);
-        round2.setPlayer2(player2);
-        round2.setP1Winner(false);
+        round2.setRoundPlayer1(player1);
+        round2.setRoundPlayer2(player2);
+        round2.setIsP1Winner(false);
 
         Round round3 = new Round();
-        round3.setPlayer1(player1);
-        round3.setPlayer2(player2);
-        round3.setP1Winner(true);
+        round3.setRoundPlayer1(player1);
+        round3.setRoundPlayer2(player2);
+        round3.setIsP1Winner(true);
 
         roundDAO.addRound(round);
         roundDAO.addRound(round2);
         roundDAO.addRound(round3);
 
-        Round fromDAO = roundDAO.getRoundByID(round.getID());
-        Round fromDAO2 = roundDAO.getRoundByID(round2.getID());
-        Round fromDAO3 = roundDAO.getRoundByID(round3.getID());
+        Round fromDAO = roundDAO.getRoundByID(round.getRoundID());
+        Round fromDAO2 = roundDAO.getRoundByID(round2.getRoundID());
+        Round fromDAO3 = roundDAO.getRoundByID(round3.getRoundID());
 
         assertEquals(fromDAO, round);
         assertEquals(fromDAO2, round2);
@@ -191,33 +191,33 @@ public class RoundDAOJDBCImplTest {
     @Test
     public void testDeleteRound() {
         Player player1 = new Player();
-        player1.setID(01);
-        player1.setFirstName("Alex");
-        player1.setLastName("Cepeda");
-        player1.setGamertag("DummyThicc");
+        player1.setPlayerID(01);
+        player1.setPlayerFirstName("Alex");
+        player1.setPlayerLastName("Cepeda");
+        player1.setPlayerDisplayName("DummyThicc");
         playerDAO.addPlayer(player1);
 
         Player player2 = new Player();
-        player2.setID(02);
-        player2.setFirstName("Kevin");
-        player2.setLastName("Cepeda");
-        player2.setGamertag("dweeeb");
+        player2.setPlayerID(02);
+        player2.setPlayerFirstName("Kevin");
+        player2.setPlayerLastName("Cepeda");
+        player2.setPlayerDisplayName("dweeeb");
         playerDAO.addPlayer(player2);
 
         Round round = new Round();
-        round.setPlayer1(player1);
-        round.setPlayer2(player2);
-        round.setP1Winner(true);
+        round.setRoundPlayer1(player1);
+        round.setRoundPlayer2(player2);
+        round.setIsP1Winner(true);
 
         Round round2 = new Round();
-        round2.setPlayer1(player1);
-        round2.setPlayer2(player2);
-        round2.setP1Winner(false);
+        round2.setRoundPlayer1(player1);
+        round2.setRoundPlayer2(player2);
+        round2.setIsP1Winner(false);
 
         Round round3 = new Round();
-        round3.setPlayer1(player1);
-        round3.setPlayer2(player2);
-        round3.setP1Winner(true);
+        round3.setRoundPlayer1(player1);
+        round3.setRoundPlayer2(player2);
+        round3.setIsP1Winner(true);
 
         roundDAO.addRound(round);
         roundDAO.addRound(round2);
@@ -229,8 +229,8 @@ public class RoundDAOJDBCImplTest {
         assertTrue(rounds.contains(round2));
         assertTrue(rounds.contains(round3));
 
-        roundDAO.deleteRound(round.getID());
-        roundDAO.deleteRound(round2.getID());
+        roundDAO.deleteRound(round.getRoundID());
+        roundDAO.deleteRound(round2.getRoundID());
 
         rounds = roundDAO.getAllRounds();
         assertEquals(1, rounds.size());

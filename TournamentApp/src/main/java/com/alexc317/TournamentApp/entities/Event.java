@@ -14,50 +14,50 @@ import java.util.Objects;
  */
 public class Event {
 
-    private int ID;
-    private String name;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private int eventID;
+    private String eventName;
+    private LocalDate eventStartDate;
+    private LocalDate eventEndDate;
 
-    public int getID() {
-        return ID;
+    public int getEventID() {
+        return eventID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setEventID(int eventID) {
+        this.eventID = eventID;
     }
 
-    public String getName() {
-        return name;
+    public String getEventName() {
+        return eventName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public LocalDate getEventStartDate() {
+        return eventStartDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setEventStartDate(LocalDate eventStartDate) {
+        this.eventStartDate = eventStartDate;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
+    public LocalDate getEventEndDate() {
+        return eventEndDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public void setEventEndDate(LocalDate eventEndDate) {
+        this.eventEndDate = eventEndDate;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + this.ID;
-        hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.startDate);
-        hash = 29 * hash + Objects.hashCode(this.endDate);
+        hash = 29 * hash + this.eventID;
+        hash = 29 * hash + Objects.hashCode(this.eventName);
+        hash = 29 * hash + Objects.hashCode(this.eventStartDate);
+        hash = 29 * hash + Objects.hashCode(this.eventEndDate);
         return hash;
     }
 
@@ -73,16 +73,16 @@ public class Event {
             return false;
         }
         final Event other = (Event) obj;
-        if (this.ID != other.ID) {
+        if (this.eventID != other.eventID) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.eventName, other.eventName)) {
             return false;
         }
-        if (!Objects.equals(this.startDate, other.startDate)) {
+        if (!Objects.equals(this.eventStartDate, other.eventStartDate)) {
             return false;
         }
-        if (!Objects.equals(this.endDate, other.endDate)) {
+        if (!Objects.equals(this.eventEndDate, other.eventEndDate)) {
             return false;
         }
         return true;

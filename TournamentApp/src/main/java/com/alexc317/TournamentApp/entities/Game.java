@@ -13,15 +13,15 @@ import java.util.Objects;
  */
 public class Game {
 
-    private int ID;
+    private int gameID;
     private String gameName;
 
-    public int getID() {
-        return ID;
+    public int getGameID() {
+        return gameID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setGameID(int gameID) {
+        this.gameID = gameID;
     }
 
     public String getGameName() {
@@ -35,7 +35,7 @@ public class Game {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + this.ID;
+        hash = 53 * hash + this.gameID;
         hash = 53 * hash + Objects.hashCode(this.gameName);
         return hash;
     }
@@ -52,7 +52,7 @@ public class Game {
             return false;
         }
         final Game other = (Game) obj;
-        if (this.ID != other.ID) {
+        if (this.gameID != other.gameID) {
             return false;
         }
         if (!Objects.equals(this.gameName, other.gameName)) {

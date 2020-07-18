@@ -30,7 +30,7 @@ public class GameDAOJDBCImpl implements GameDAO {
     public Game addGame(Game game) {
         jdbc.update(INSERT_NEW_GAME, game.getGameName());
         int newID = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
-        game.setID(newID);
+        game.setGameID(newID);
         return game;
     }
 
@@ -46,7 +46,7 @@ public class GameDAOJDBCImpl implements GameDAO {
 
     @Override
     public void updateGame(Game game) {
-        jdbc.update(UPDATE_GAME, game.getGameName(), game.getID());
+        jdbc.update(UPDATE_GAME, game.getGameName(), game.getGameID());
     }
 
     @Override
@@ -59,7 +59,7 @@ public class GameDAOJDBCImpl implements GameDAO {
         @Override
         public Game mapRow(ResultSet rs, int i) throws SQLException {
             Game game = new Game();
-            game.setID(rs.getInt("ID"));
+            game.setGameID(rs.getInt("ID"));
             game.setGameName(rs.getString("gameName"));
             return game;
         }
